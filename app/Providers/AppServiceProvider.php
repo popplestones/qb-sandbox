@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         CallbackManager::registerCustomers(
             fn() => Customer::query()->with(['shipping_address', 'billing_address']),
             fn($q) => $q->whereNull('qb_customer_id')->whereSync(true)
-        );      
+        );
     }
 
 

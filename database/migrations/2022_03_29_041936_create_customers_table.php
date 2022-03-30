@@ -19,14 +19,16 @@ return new class extends Migration
             $table->string('family_name')->nullable();
             $table->string('fully_qualified_name');
             $table->string('company_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('display_name');
             $table->string('print_on_check_name');
             $table->boolean('active')->default(true);
             $table->boolean('taxable')->default(true);
             $table->boolean('job')->default(false);
-            $table->boolean('bill_with_parent');
+            $table->boolean('bill_with_parent')->default(false);
             $table->string('currency_ref')->nullable();
-            $table->string('preferred_delivery_method');
+            $table->string('preferred_delivery_method')->default('None');
             $table->boolean('is_project')->default(false);
             $table->string('primary_email_addr')->nullable();
 

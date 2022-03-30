@@ -22,6 +22,8 @@ class CustomerFactory extends Factory
             'given_name' => $this->faker->firstName(),
             'family_name' => $this->faker->lastName(),
             'fully_qualified_name' => $company,
+            'email' => $this->faker->email(),
+            'phone' => $this->faker->phoneNumber(),
             'company_name' => $company,
             'display_name' => $company,
             'print_on_check_name' => $company,
