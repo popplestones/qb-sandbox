@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Item;
+use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
 use Popplestones\Quickbooks\Facades\CallbackManager;
 use Popplestones\Quickbooks\Services\QuickbooksHelper;
@@ -38,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
         CallbackManager::registerCustomers(
             fn() => Customer::query()->with(['shipping_address', 'billing_address']),
             fn($q) => $q->whereNull('qb_customer_id')->whereSync(true)
+        );
+
+        CallbackManager::registerItems(
+            fn() => Product::query(),
+            fn($q) => $q->whereNull('qb_product_id')->whereSync(true)
         );
     }
 
