@@ -45,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
             fn() => Product::query(),
             fn($q) => $q->whereNull('qb_product_id')->whereSync(true)
         );
+
+        //CallbackManager::registerSomething();
     }
 
 

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\AccountType;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
  */
@@ -16,17 +16,16 @@ class AccountFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->word();
+        
         return [
-            'name' => $this->faker->name(),
+            'name' => $name,
+            
             'description' => $this->faker->sentence(),
-            'sub_account' => null,
-            'fully_qualified_name' => $this->faker->name(),
+            'fully_qualified_name' => $name,
+            'account_type' => AccountType::inRandomOrder()->first()->name,
             'active' => [true,false][mt_rand(0,1)],
-            'classification' => null,
-            'account_type' => null,
-            'account_sub_type' => null,
             'currency_ref' => 'AUD',
-            'qb_account_id' => null,
             'sync' => true
         ];
     }

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->boolean('taxable')->default(true);
             $table->boolean('sales_tax_included')->default(false);
             $table->string('unit_price')->nullable();
-            $table->string('type')->default('Service');
+            $table->string('type')->default('Category');
             $table->string('income_account_ref')->nullable();
             $table->boolean('purchase_tax_included')->default(false);
             $table->string('purchase_cost')->nullable();
@@ -48,6 +48,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_categories');
+        Schema::dropIfExists('products');
     }
 };
