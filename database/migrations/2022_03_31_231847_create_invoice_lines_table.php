@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('invoice_lines', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('active');
-            $table->string('type');
-            $table->string('qb_payment_method_id')->nullable();
-            $table->boolean('sync')->default(true);
-            $table->integer('sync_failed')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('invoice_lines');
     }
 };

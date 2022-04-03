@@ -18,7 +18,7 @@ class Customer extends Model
         'sync' => 'boolean'
     ];
     protected $guarded = [];
-    
+
     public function billing_address()
     {
         return $this->hasOne(Address::class)->whereType('billing');
@@ -27,4 +27,14 @@ class Customer extends Model
     {
         return $this->hasOne(Address::class)->whereType('shipping');
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
+

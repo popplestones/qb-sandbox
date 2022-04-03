@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('tax_rates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('active');
-            $table->string('type');
-            $table->string('qb_payment_method_id')->nullable();
-            $table->boolean('sync')->default(true);
-            $table->integer('sync_failed')->default(0);
+            $table->string('description')->nullable();
+            $table->boolean('tax_group')->default(false);
+            $table->boolean('active')->default(true);
+            $table->boolean('taxable')->default(true);
+            $table->boolean('hidden')->default(false);
+            $table->string('qb_tax_code_id')->nullable();
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('tax_rates');
     }
 };
