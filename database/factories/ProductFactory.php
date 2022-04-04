@@ -17,7 +17,8 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word()
+            'name' => $this->faker->word(),
+            'unit_price' => mt_rand(1, 100)
         ];
     }
 }

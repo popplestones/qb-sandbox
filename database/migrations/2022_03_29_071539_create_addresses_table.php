@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['billing', 'shipping']);
-            $table->foreignIdFor(Customer::class);
+            $table->foreignIdFor(Customer::class)->nullable();
             $table->string('line1')->nullable();
             $table->string('line2')->nullable();
             $table->string('city')->nullable();

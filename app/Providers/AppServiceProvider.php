@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Item;
+use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
@@ -45,6 +46,14 @@ class AppServiceProvider extends ServiceProvider
         CallbackManager::registerItems(
             fn () => Product::query(),
             fn ($q) => $q->whereNull('qb_product_id')->whereSync(true)
+        );
+
+        CallbackManager::registerPayments(
+            fn () => Payment::whereHas('customer', fn($q) =>
+                $q->whereSync(true)
+                ->whereNotNull('qb_customer_id')
+            ),
+            fn ($q) => $q->whereNull('qb_payment_id')->whereSync(true)
         );
     }
 }

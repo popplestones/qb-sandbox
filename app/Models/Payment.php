@@ -16,4 +16,16 @@ class Payment extends Model
     {
         return $this->hasMany(PaymentLine::class);
     }
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
+    public function payment_method()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

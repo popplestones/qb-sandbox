@@ -16,8 +16,13 @@ class InvoiceLineFactory extends Factory
      */
     public function definition()
     {
+        $qty = mt_rand(1, 5);
+        $price = mt_rand(100, 10000) / 100;
         return [
-            //
+            'qty' => $qty,
+            'unit_price' =>  $price,
+            'amount' => $price * $qty,
+            'description' => $this->faker->words(3,true),
         ];
     }
 }

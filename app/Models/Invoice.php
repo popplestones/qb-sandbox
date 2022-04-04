@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
+    
     public function invoice_lines()
     {
         return $this->hasMany(InvoiceLine::class);
@@ -17,5 +19,9 @@ class Invoice extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'customer_id', 'type', 'line1', 'line2', 'city', 'country', 'state', 'postal_code', 'lat', 'long', 'tag', 'note'
-    ];
+    protected $guarded = [];
 
     public function customer()
     {
