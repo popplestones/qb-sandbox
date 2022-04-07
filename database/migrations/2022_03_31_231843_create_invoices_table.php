@@ -33,6 +33,9 @@ return new class extends Migration
             $table->string('ship_method')->nullable();
             $table->boolean('apply_tax_after_discount')->default(false);
             $table->decimal('total_amount');
+            $table->string('qb_invoice_id')->nullable();
+            $table->boolean('sync')->default(true);
+            $table->integer('sync_failed')->default(0);
             $table->timestamps();
         });
     }
