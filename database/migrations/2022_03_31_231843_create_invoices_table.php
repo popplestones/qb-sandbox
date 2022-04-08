@@ -31,7 +31,7 @@ return new class extends Migration
             $table->text('private_note')->nullable();
             $table->string('customer_memo')->nullable();
             $table->string('ship_method')->nullable();
-            $table->boolean('apply_tax_after_discount')->default(false);
+            $table->boolean('apply_tax_after_discount')->default(false)->nullable();
             $table->decimal('total_amount');
             $table->string('qb_invoice_id')->nullable();
             $table->boolean('sync')->default(true);

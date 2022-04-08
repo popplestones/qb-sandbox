@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class InvoiceLine extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     protected static function booted()
     {
@@ -23,5 +24,14 @@ class InvoiceLine extends Model
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    public function tax_rate()
+    {
+        return $this->belongsTo(TaxRate::class);
     }
 }

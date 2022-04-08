@@ -29,6 +29,7 @@ return new class extends Migration
             $table->decimal('discount_rate')->nullable();
             $table->decimal('qty')->nullable();
             $table->decimal('unit_price')->nullable();
+            $table->integer('line_num')->default(1)->nullable();
             $table->foreignIdFor(Invoice::class);
 
             $table->timestamps();
